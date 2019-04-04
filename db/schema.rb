@@ -11,12 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190403173507) do
+ActiveRecord::Schema.define(version: 20190404175020) do
+
+  create_table "artist_instruments", force: :cascade do |t|
+    t.integer "artist_id"
+    t.integer "instrument_id"
+  end
 
   create_table "artists", force: :cascade do |t|
     t.string  "name"
     t.integer "age"
     t.string  "bio"
+  end
+
+  create_table "instruments", force: :cascade do |t|
+    t.string "name"
+    t.string "brand"
   end
 
 end
