@@ -3,6 +3,13 @@
 <form action="/artists/<%= @artist.id %>" method="POST">
   <input type="hidden" name="_method" value="PATCH">
   <%= erb :"artists/form" %>
+  <label for="add_instrument">Add Instrument: </label>
+  <select name="instrument[id]">
+    <% @instruments.each do |instrument| %>
+    <option value="<%= instrument.id %>"><%= instrument.name%></option>
+    <% end %>
+
+  </select>
   <input type="submit" value="Edit <%= @artist.name %>" />
 </form>
 
@@ -13,4 +20,6 @@
 <form action="/artists/<%= @artist.id %>" method="POST">
   <input type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete <%= @artist.name %>">
+
+
 </form>

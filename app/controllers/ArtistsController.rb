@@ -1,5 +1,5 @@
 class ArtistsController < ApplicationController
-  
+
   get "/artists" do
     @artists = Artist.all
     erb :'artists/index'
@@ -17,12 +17,16 @@ class ArtistsController < ApplicationController
 
   get "/artists/:id/edit" do
     @artist = Artist.find(params[:id])
+    @instruments = Instrument.all
     erb :'artists/edit'
   end
 
   patch "/artists/:id" do
     @artist = Artist.find(params[:id])
+    # binding.pry
     @artist.update(params[:artist])
+    @instrument = Instrument.find_by(params[:instrument])
+    @artist_instrument = ArtistInstrument.create(artist_id: @artist.id, instrument_id: @instrument.id)
     redirect to "/artists/#{@artist.id}"
   end
 
