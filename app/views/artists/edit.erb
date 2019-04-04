@@ -3,13 +3,6 @@
 <form action="/artists/<%= @artist.id %>" method="POST">
   <input type="hidden" name="_method" value="PATCH">
   <%= erb :"artists/form" %>
-  <label for="add_instrument">Add Instrument: </label>
-  <select name="instrument[id]">
-    <% @instruments.each do |instrument| %>
-    <option value="<%= instrument.id %>"><%= instrument.name%></option>
-    <% end %>
-
-  </select>
   <input type="submit" value="Edit <%= @artist.name %>" />
 </form>
 
@@ -23,3 +16,13 @@
 
 
 </form>
+
+<!-- bad checkbox code -->
+<!--
+<% @instruments.each do |instrument| %>
+  <% if @artist.instruments.include?(instrument) %>
+    <input type="checkbox" checked> <label><%= instrument.name%></label>
+  <% else %>
+    <input type="checkbox" value="<%= instrument.id %>"> <label><%= instrument.name%></label>
+  <% end %>
+<% end %> -->

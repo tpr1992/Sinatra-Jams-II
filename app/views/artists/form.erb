@@ -4,3 +4,12 @@
 <br/>
 <input type="text" name="artist[bio]" value="<%= @artist.bio %>" placeholder="Bio of Artist"/>
 <br/>
+<label for="add_instrument">Instruments: </label>
+<select name="instrument[id]">
+  <% @instruments.each do |instrument| %>
+    <% if !@artist.instruments.include?(instrument) %>
+      <option value="<%= instrument.id %>"> <%= instrument.name%> </option>
+    <% end %>
+  <% end %>
+</select>
+<br/>
